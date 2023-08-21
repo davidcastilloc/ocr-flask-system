@@ -1,21 +1,10 @@
 version: "3"
-
 services:
-  redis:
-    image: redis:buster
-
   web:
     build:
       context: ./web/
+    command: "gunicorn --workers 4 --name app -b 0.0.0.0:8000 --reload app.app:app"
+    volumes:
+      - ./web:/code:rw
     ports:
-      - "8000:8000"
-    links:
-      - redis
-
-  nginx:
-    restart: always
-    build: ./nginx/
-    ports:
-      - "80:80"
-    links:
-      - web
+      - "8080:8000"

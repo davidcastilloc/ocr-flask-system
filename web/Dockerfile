@@ -1,9 +1,17 @@
-FROM python:3.8.5-slim-buster
+FROM python:3.9-alpine
 
-LABEL maintainer="Peng Xiao<xiaoquwl@gmail.com>"
+LABEL maintainer="David Castillo <vikruzdavid@gmail.com>"
 
-COPY . /
+WORKDIR /code
 
-RUN pip install -r requirements.txt && pip install gunicorn
+ENV FLASK_APP ./app/app.py
 
-ENTRYPOINT ["/runserver.sh"]
+ENV FLASK_RUN_HOST 0.0.0.0
+
+RUN apk add --no-cache gcc  musl-dev linux-headers
+
+COPY requirements.txt requirements.txt
+
+RUN pip install -r requirements.txt 
+
+CMD [ "flask" "run" ]
