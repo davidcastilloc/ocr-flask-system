@@ -3,8 +3,11 @@ services:
   web:
     build:
       context: ./web/
-    command: "gunicorn --workers 4 --name app -b 0.0.0.0:8000 --reload app.app:app"
+    #command: "gunicorn --name app -b 0.0.0.0:8000 --reload app.app:app"
     volumes:
       - ./web:/code:rw
+    environment:
+      FLASK_DEBUG: true
+      TESTING: true
     ports:
-      - "8080:8000"
+      - "80:5000"

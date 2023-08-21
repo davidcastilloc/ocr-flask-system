@@ -14,10 +14,13 @@
 #    under the License.
 
 from flask import Flask
+from flask import render_template
+
+from .controllers.ocr import extract_text_from_recipe
 
 app = Flask(__name__)
 
-
 @app.route('/')
-def hello():
-    return 'Hello Container World!'
+def index():
+    list_detected_words = extract_text_from_recipe(route_img_recipe="./app/static/img/text.png")
+    return render_template('index.html.jinja', titulo="OCR Flask", recipe=list_detected_words)

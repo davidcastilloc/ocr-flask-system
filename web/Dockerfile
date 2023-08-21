@@ -10,8 +10,12 @@ ENV FLASK_RUN_HOST 0.0.0.0
 
 RUN apk add --no-cache gcc  musl-dev linux-headers
 
+RUN apk add tesseract-ocr
+
+RUN wget https://github.com/tesseract-ocr/tessdata_best/raw/main/spa.traineddata -P /usr/share/tessdata/
+
 COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt 
 
-CMD [ "flask" "run" ]
+CMD ["flask", "run"]
