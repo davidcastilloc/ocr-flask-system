@@ -52,7 +52,7 @@ def return_word_if_matches_on_glosary(word, glosary):
 
 
 def get_recipe_list_items(route_uploaded_img_recipe="./app/static/img/text.png"):
-    raw_text = extract_raw_text_from_recipe(route_uploaded_img_recipe)
+    raw_text = extract_raw_text_from_recipe("./app/static/uploads/" + route_uploaded_img_recipe)
     cleaned_text = clean_raw_text(raw_text)
     words_extracted = extract_words_from_cleaned_text_and_return_list(
         cleaned_text)
