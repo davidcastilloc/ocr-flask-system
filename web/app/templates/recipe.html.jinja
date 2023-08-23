@@ -1,27 +1,45 @@
 {% extends "layout.html.jinja" %}
 {% block content %}
 <div class="container">
-<div class="row">
-    <div class="col-md-12">
-    <div class="card">
-        <div class="card-header">
-        <h4 class="card-title">Recipe Medico</h4>
-        <img class="rounded mx-auto d-block" src={{ url_for('static', filename='uploads/'+ img_filename) }} height="40%" width="40%">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Recipe Medico</h4>
+                    <img class="rounded mx-auto d-block" src={{ url_for('static', filename='uploads/' + img_filename) }}
+                        height="40%" width="40%">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Selecciona el texto que quieres comparar
+                    </h4>
+                </div>
+                <div class="card-content mx-auto d-flex justify-content-between p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Lista de palabras extraidas.</h5>
+                            <ul class="list-group">
+                                {% for item in lists.get("kywords_extracted") %}
+                                <li class="list-group-item">{{item}}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Lista de palabras en el glosario.</h5>
+                            <ul class="list-group">
+                                {% for item in lists.get("glossary_kywords") %}
+                                    <button type="button" class="list-group-item list-group-item-action active">{{item}}</button>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    <div class="card">
-    <div class="card-header">
-        <h4 class="card-title">
-        Selecciona el texto que quieres comparar
-        </h4>
-    </div>
-    <div class="card-content m-3" >
-        {% for item in recipe %}
-        <button class="btn btn-primary">{{item}}</button>
-        {% endfor %}
-    </div>
-    
-    </div>
-</div>
-</div>
-{% endblock %}
+    {% endblock %}
