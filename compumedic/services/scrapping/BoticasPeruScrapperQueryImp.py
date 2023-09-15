@@ -8,7 +8,7 @@ class BoticasPeruScrapperQueryImp(IScrapperQuery):
     url = None
     query = None
 
-    def __init__(self, query="acetaminofen"):
+    def __init__(self, query):
         super().__init__(query)
         self.query = query
 
@@ -24,14 +24,14 @@ class BoticasPeruScrapperQueryImp(IScrapperQuery):
                           "Chrome/116.0.0.0 Safari/537.36"}
         response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
         self.url = response.json().get('result')[1].get('data')[0].get('url')
-        pass
+        return response.json().get('result')[1].get('data')[0]
 
     def get_result(self) -> ProductScrapped:
-        print("scrapping > " + self.url)
+        data = self.execute_query()
         html_content = requests.get(self.url).content
         # Crear un objeto BeautifulSoup
         soup = BeautifulSoup(html_content, 'html.parser')
         title = soup.find("meta", property="og:title")
-        img = soup.find("meta", property="og:image")
+        img = data.get('image')
         price = soup.findAll('span', {'class': 'price'})[0].get_text().replace('S/', '')
         return ProductScrapped(name=title["content"], price=price, store_id=6, photo=img)

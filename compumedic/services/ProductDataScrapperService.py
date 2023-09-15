@@ -21,7 +21,7 @@ class IScrapperQuery:
         print("\nInterfaceQuery: " + self.query)
         pass
 
-    def execute_query(self) -> bool:
+    def execute_query(self):
         """ run all routines in order to success scrap needed """
 
     def get_result(self) -> ProductScrapped:

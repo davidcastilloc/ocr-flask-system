@@ -1,7 +1,9 @@
 {% extends "layout.jinja2" %}
 {% block content %}
-<h1>Comparar View {{q}} </h1>
-    <table class="table">
+<h1>Comparar View {{ q }} </h1>
+<div class="container-fluid card">
+
+            <table class="table">
   <thead>
     <tr>
       <th id="tienda-col" scope="col" class="text-center">Tienda</th>
@@ -22,10 +24,20 @@
               <figcaption class="figure-caption text-center"> {{ store.name }}</figcaption>
           </figure>
       </th>
-      <td>{{ store.product.name}}</td>
-      <td>{{ store.product.price }}</td>
+      <td>
+           <figure class="figure">
+              <img
+                      id="logo-store"
+                      class="figure-img img-fluid rounded"
+                      src={{ store.product.photo }}
+              >
+          </figure>
+          {{ store.product.name}}
+      </td>
+      <td>S/ {{ store.product.price }}</td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
+		</div>
 {% endblock %}
