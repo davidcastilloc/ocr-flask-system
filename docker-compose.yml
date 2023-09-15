@@ -2,12 +2,14 @@ version: "3"
 services:
   web:
     build:
-      context: ./web/
-    #command: "gunicorn --name app -b 0.0.0.0:8000 --reload app.app:app"
+      context: .
+    working_dir: /
+    command: "flask run"
     volumes:
-      - ./web:/code:rw
+      - ./compumedic:/compumedic:rw
     environment:
       FLASK_DEBUG: true
       TESTING: true
+      FLASK_RUN_HOST: 0.0.0.0
     ports:
-      - "80:5000"
+      - "5000:5000"
