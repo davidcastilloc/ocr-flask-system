@@ -1,15 +1,29 @@
-version: "3"
+version: "3.4"
 services:
   web:
     build:
       context: .
-    working_dir: /
-    command: "flask run"
+      dockerfile: Dockerfile
+      target: dev
+    working_dir: /code
+    command: "python app.py"
     volumes:
-      - ./compumedic:/compumedic:rw
+      - .:/code:rw
     environment:
-      FLASK_DEBUG: true
-      TESTING: true
-      FLASK_RUN_HOST: 0.0.0.0
+      - FLASK_DEBUG
+      - TESTING
+      - FLASK_RUN_HOST
+      - CACHE_TYPE
     ports:
       - "5000:5000"
+  redis:
+    image: redis:alpine3.18
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - cache:/data
+volumes:
+  cache:
+    driver: local

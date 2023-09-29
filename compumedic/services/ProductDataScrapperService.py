@@ -1,3 +1,6 @@
+import json
+
+
 class ProductScrapped:
     name = None
     price = None
@@ -10,6 +13,17 @@ class ProductScrapped:
         self.store_id = store_id
         self.photo = photo
         pass
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "price": self.price,
+            "store_id": self.store_id,
+            "photo": self.photo
+        }
 
 
 class IScrapperQuery:

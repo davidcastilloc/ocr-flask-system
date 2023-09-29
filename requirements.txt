@@ -22,3 +22,5 @@ pytz
 requests
 alembic
 beautifulsoup4
+Flask-Redis
+Flask-Caching

@@ -35,7 +35,7 @@ class BoticasHogarYSalud(IScrapperQuery):
         title = data[0].get('value')
         # Crear un objeto BeautifulSoup para extraer precio del span
         soup = BeautifulSoup(data[0].get('price'), 'html.parser')
-        price = soup.findAll('bdi')[1].text.replace('S/', '').strip()
+        price = soup.findAll('bdi')[0].text.replace('S/', '').strip()
         soup_photo = BeautifulSoup(data[0].get('thumbnail'), 'html.parser')
         img = soup_photo.findAll('img')[0].get('src')
         return ProductScrapped(name=title, price=price, store_id=6, photo=img)
