@@ -6,10 +6,10 @@ services:
       dockerfile: Dockerfile
       target: prod
     working_dir: /code
-    command: "flask run --cert=/certs/cert.pem --key=/certs/key.pem"
+    command: "flask run --cert=/var/certs/cert1.pem --key=/var/certs/privkey1.pem"
     volumes:
       - .:/code:rw
-      - /etc/letsencrypt/live/compymedic.duckdns.org/:/code/certs/
+      - /etc/letsencrypt/archive/compymedic.duckdns.org:/var/certs:ro
   redis:
     image: redis:alpine3.18
     volumes:
