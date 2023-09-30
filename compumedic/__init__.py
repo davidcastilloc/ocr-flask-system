@@ -1,18 +1,6 @@
 from flask import Flask
-from flask_caching import Cache
-
-from .config import Config
 
 app = Flask(__name__, template_folder="templates")
-cache = Cache()
-cache.init_app(app, {
-    "CACHE_TYPE": "RedisCache",
-    "CACHE_REDIS_HOST": Config.REDIS_HOST,
-    "CACHE_REDIS_DB": "0",
-    "CACHE_REDIS_PORT": "6379",
-    "CACHE_KEY_PREFIX": "compumedic",
-    "CACHE_DEFAULT_TIMEOUT": 43200
-})
 
 
 def create_app():
