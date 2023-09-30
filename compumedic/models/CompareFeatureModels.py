@@ -2,7 +2,7 @@ from compumedic.extensions import db
 
 
 class Product(db.Model):
-    __tablename__ = 'product'
+    __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     description = db.Column(db.String(120))
@@ -12,7 +12,7 @@ class Product(db.Model):
 
 
 class Store(db.Model):
-    __tablename__ = 'store'
+    __tablename__ = 'stores'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     description = db.Column(db.String(120), )
