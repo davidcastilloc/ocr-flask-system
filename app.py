@@ -1,21 +1,17 @@
 from compumedic import create_app
 from compumedic.cache import cache
 from compumedic.extensions import db
-
+from compumedic.config import Config
+from compumedic.constants import CERT_PRIVATE_KEY, CERT_PEM
 app = create_app()
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
-app.config['CACHE_TYPE'] = 'RedisCache'
-app.config['CACHE_REDIS_HOST'] = 'redis'
-app.config['CACHE_REDIS_PORT'] = '6379'
-app.config['CACHE_REDIS_DB'] = '0'
-app.config['CACHE_KEY_PREFIX'] = 'compumedic'
 
 cache.init_app(app)
 db.init_app(app)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host=Config.HOST)
 
 with app.app_context():
     cache.clear()

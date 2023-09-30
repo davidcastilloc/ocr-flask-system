@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder="templates")
 cache = Cache()
 cache.init_app(app, {
     "CACHE_TYPE": "RedisCache",
-    "CACHE_REDIS_HOST": "redis",
+    "CACHE_REDIS_HOST": Config.REDIS_HOST,
     "CACHE_REDIS_DB": "0",
     "CACHE_REDIS_PORT": "6379",
     "CACHE_KEY_PREFIX": "compumedic",

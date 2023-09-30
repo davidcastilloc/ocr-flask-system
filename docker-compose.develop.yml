@@ -9,19 +9,8 @@ services:
     command: "python app.py"
     volumes:
       - .:/code:rw
-    environment:
-      - FLASK_DEBUG
-      - TESTING
-      - FLASK_RUN_HOST
-      - CACHE_TYPE
-    ports:
-      - "5000:5000"
   redis:
     image: redis:alpine3.18
-    restart: always
-    ports:
-      - "6379:6379"
-    command: redis-server --save 20 1 --loglevel warning
     volumes:
       - cache:/data
 volumes:
