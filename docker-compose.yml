@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile
       target: dev
     working_dir: /code
-    command: "python app.py"
     volumes:
       - .:/code:rw
     environment:

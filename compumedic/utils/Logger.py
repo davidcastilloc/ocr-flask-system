@@ -30,7 +30,6 @@ class Logger():
     def add_to_log(cls, level, message):
         try:
             logger = cls.__set_logger(cls)
-
             if (level == "critical"):
                 logger.critical(message)
             elif (level == "debug"):

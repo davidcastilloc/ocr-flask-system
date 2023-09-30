@@ -1,9 +1,12 @@
 from flask import Flask
-
+from .extensions import db, migrate
 app = Flask(__name__, template_folder="templates")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 
 
 def create_app():
+    db.init_app(app)
+    migrate.init_app(app, db)
     from compumedic.routes.IndexRoutes import main as main_blueprint
     from compumedic.routes.CompareFeatureRoutes import compare as compare_blueprint
     from compumedic.routes.ProcessRecipe import upload as upload_blueprint
