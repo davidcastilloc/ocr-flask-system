@@ -25,33 +25,33 @@ def get_data(query):
 
     return [
         {
-            'name': get_store_by_id(1).name,
-            'photo': get_store_by_id(1).logo,
+            'name': "MiFarma",
+            'photo': "Mifarma.png",
             'product': inst_mf.get_result()
         },
         {
-            'name': get_store_by_id(2).name,
-            'photo': get_store_by_id(2).logo,
+            'name': "BoticasHogarYSalud",
+            'photo': "BoticasHogarYSalud.png",
             'product': inst_bhs.get_result()
         },
         {
-            'name': get_store_by_id(3).name,
-            'photo': get_store_by_id(3).logo,
+            'name': "InkaFarma",
+            'photo': "Inkafarma.png",
             'product': inst_ik.get_result()
         },
         {
-            'name': get_store_by_id(4).name,
-            'photo': get_store_by_id(4).logo,
+            'name': "BoticasYSalud",
+            'photo': "BoticasYSalud.png",
             'product': inst_bs.get_result()
         },
         {
-            'name': get_store_by_id(5).name,
-            'photo': get_store_by_id(5).logo,
+            'name': "FarmaciaUniversal",
+            'photo': "FarmaciaUniversal.png",
             'product': inst_fu.get_result()
         },
         {
-            'name': get_store_by_id(6).name,
-            'photo': get_store_by_id(6).logo,
+            'name': "BoticasPeru",
+            'photo': "BoticasPeru.png",
             'product': inst_bp.get_result()
         }
     ]

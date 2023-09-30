@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       target: prod
     working_dir: /code
-    command: "flask run"
+    command: "python app.py"
     volumes:
       - .:/code:rw
       - /etc/letsencrypt/archive/compymedic.duckdns.org:/var/certs:ro
