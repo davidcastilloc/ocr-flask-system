@@ -16,5 +16,15 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="test.db" uuid="2c76785c-57e1-4a0f-83d7-727659c3ea83">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\pc911\github-repos\OCR_INVESTIGACION\SISTEMA\ocr-flask\compumedic\instance\test.db</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
