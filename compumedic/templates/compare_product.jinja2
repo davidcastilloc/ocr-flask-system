@@ -1,17 +1,24 @@
 {% extends "layout.jinja2" %}
 {% block content %}
+<style>
+.table td, .table th {
+	padding: .75rem;
+	vertical-align: baseline;
+	border-top: 1px solid #dee2e6;
+}
+</style>
     <table class="table table-sm">
         <thead>
         <tr>
             <th id="tienda-col" scope="col" class="text-left">Tienda</th>
             <th scope="col">Producto</th>
-            <th scope="col">Precio Online</th>
+            <th scope="col" class="text-right">Precio Online</th>
         </tr>
         </thead>
         <tbody>
         {% for store in stores %}
             <tr>
-                <th class="mx-auto px-auto text-left">
+                <th class="text-left">
                     <figure class="figure p-0 m-0">
                         <img
                                 id="logo-store"
@@ -24,14 +31,15 @@
                 <td>
                     <figure class="figure p-0 m-0">
                         <img
-                                id="logo-store"
+                                height="50px"
+                                width="50px"
                                 class="figure-img img-fluid rounded"
                                 src={{ store.product.photo }}
                         >
                     </figure>
                     {{ store.product.name }}
                 </td>
-                <td>S/ {{ store.product.price }}</td>
+                <td class="text-right">S/ {{ store.product.price }}</td>
             </tr>
         {% endfor %}
         </tbody>
