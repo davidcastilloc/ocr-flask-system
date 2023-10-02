@@ -6,8 +6,7 @@ RUN apk add --no-cache gcc musl-dev linux-headers tesseract-ocr
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
 # Descargar spa.traineddata y cambiar permisos
-RUN wget https://github.com/tesseract-ocr/tessdata_best/raw/main/spa.traineddata -O /usr/share/tessdata/spa.traineddata && \
-    chmod +r /usr/share/tessdata/spa.traineddata
+ADD https://github.com/tesseract-ocr/tessdata_best/raw/main/spa.traineddata /usr/share/tessdata/spa.traineddata
 
 # Stage 2: Development stage
 FROM build as dev
