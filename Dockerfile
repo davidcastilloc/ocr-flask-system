@@ -19,7 +19,7 @@ CMD flask run
 
 # Stage 3: Production stage
 FROM build as prod
-RUN apk remove  gcc musl-dev linux-headers
+RUN apk del gcc musl-dev linux-headers
 RUN pip install -r requirements.txt
 ENV FLASK_ENV production
 EXPOSE 5000
