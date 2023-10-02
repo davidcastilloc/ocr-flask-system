@@ -1,11 +1,9 @@
 {% extends "layout.jinja2" %}
-{% block menu %}
-{% endblock %}
 {% block content %}
-    <table class="table">
+    <table class="table table-sm">
         <thead>
         <tr>
-            <th id="tienda-col" scope="col" class="text-center">Tienda</th>
+            <th id="tienda-col" scope="col" class="text-left">Tienda</th>
             <th scope="col">Producto</th>
             <th scope="col">Precio Online</th>
         </tr>
@@ -13,18 +11,18 @@
         <tbody>
         {% for store in stores %}
             <tr>
-                <th class="mx-auto text-center">
-                    <figure class="figure">
+                <th class="mx-auto px-auto text-left">
+                    <figure class="figure p-0 m-0">
                         <img
                                 id="logo-store"
-                                class="figure-img img-fluid rounded"
-                                src={{ url_for('compare_feature_blueprint.static', filename='img/stores/') ~ store.photo }}
+                                class="figure-img img-fluid rounded m-0 p-0"
+                                src={{ url_for('compare_feature_blueprint.static', filename='img/stores/',
+                                 _external = True) ~ store.photo }}
                         >
-                        <figcaption class="figure-caption text-center"> {{ store.name }}</figcaption>
                     </figure>
                 </th>
                 <td>
-                    <figure class="figure">
+                    <figure class="figure p-0 m-0">
                         <img
                                 id="logo-store"
                                 class="figure-img img-fluid rounded"

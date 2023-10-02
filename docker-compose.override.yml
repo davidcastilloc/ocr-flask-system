@@ -4,12 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: prod
-    working_dir: /code
-    command: "python app.py"
+      target: dev
     volumes:
       - .:/code:rw
-      - /etc/letsencrypt/archive/compymedic.duckdns.org:/var/certs:ro
   redis:
     image: redis:alpine3.18
     volumes:

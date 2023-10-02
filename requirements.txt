@@ -24,3 +24,5 @@ alembic
 beautifulsoup4
 Flask-Redis
 Flask-Caching
+gunicorn
+unidecode
