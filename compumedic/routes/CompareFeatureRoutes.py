@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, jsonify, abort, request
 from compumedic.cache import cache
 from compumedic.services.CompareFeatureService import get_data
-
+from cleantext import clean
+import urllib.parse
 compare = Blueprint('compare_feature_blueprint', __name__, static_folder='../static')
 
 
@@ -12,6 +13,10 @@ def is_valid_query(query):
 @compare.get('/')
 def index():
     query = request.args.get('query', '')
+    query = clean(query)
+    query = urllib.parse.unquote(query)
+    query = query.replace("+&#8211;", "")
+    print("Nueva Query: "+ query)
     if not is_valid_query(query):
         abort(404)
 
