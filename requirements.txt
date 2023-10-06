@@ -1,7 +1,7 @@
 Flask
 Flask-SQLAlchemy
 Flask-Migrate
-Flask-CORS
+flask-cors
 Flask-Redis
 Flask-Caching
 gunicorn
