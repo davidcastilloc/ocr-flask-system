@@ -1,3 +1,4 @@
+from flask import abort
 import requests
 from bs4 import BeautifulSoup
 
@@ -22,6 +23,9 @@ class FarmaciaUniversalQueryImp(IScrapperQuery):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                           "Chrome/116.0.0.0 Safari/537.36"}
         response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
+        
+        if len(response.json()) ==0 :
+            abort(404, description="No se encontro el producto")
         self.url = "http://farmaciauniversal.com/" + response.json()[0].get('url')
         return response.json()[0]
 

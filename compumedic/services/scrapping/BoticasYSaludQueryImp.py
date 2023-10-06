@@ -1,6 +1,6 @@
 
 import requests
-
+from flask import abort
 from compumedic.services.ProductDataScrapperService import IScrapperQuery, ProductScrapped
 
 
@@ -27,6 +27,8 @@ class BoticasYSaludQueryImp(IScrapperQuery):
         }
 
         response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
+        if len(response.json().get('data')) == 0:
+            abort(404, description="No se encontro el producto")
         return response.json().get('data')[0].get('filters')[0]
 
     def get_result(self) -> ProductScrapped:

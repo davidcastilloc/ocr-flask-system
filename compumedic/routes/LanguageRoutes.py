@@ -26,7 +26,6 @@ def get_languages():
         except Exception as ex:
             Logger.add_to_log("error", str(ex))
             Logger.add_to_log("error", traceback.format_exc())
-
             return jsonify({'message': "ERROR", 'success': False})
     else:
         response = jsonify({'message': 'Unauthorized'})

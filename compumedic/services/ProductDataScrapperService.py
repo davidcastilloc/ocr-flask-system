@@ -1,26 +1,33 @@
 import json
+from compumedic.utils.CurrencyType import format_money
+from decimal import Decimal
 
-
-class ProductScrapped:
+class ProductScrapped(object):
     name = None
     price = None
     store_id = None
     photo = None
 
-    def __init__(self, name="", price="0.0", store_id=0, photo=""):
+    def __init__(self, name="", price=0, store_id=0, photo=""):
         self.name = name
-        self.price = price
+        self.price = round(Decimal(price), 2)
         self.store_id = store_id
         self.photo = photo
         pass
 
     def to_json(self):
         return json.dumps(self, default=lambda o: o.__dict__)
+    
+    def get_price(self):
+        return self.price
+    
+    def get_price_formated(self):
+        return format_money(self.price)
 
     def to_dict(self):
         return {
             "name": self.name,
-            "price": round(self.price,1),
+            "price": self.price,
             "store_id": self.store_id,
             "photo": self.photo
         }
