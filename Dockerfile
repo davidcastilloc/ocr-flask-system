@@ -2,7 +2,7 @@
 FROM python:alpine3.18 as build
 LABEL maintainer="David Castillo <vikruzdavid@gmail.com>"
 WORKDIR /code
-RUN apk add --no-cache gcc musl-dev linux-headers alpine-sdk tesseract-ocr 
+RUN apk add --no-cache gcc linux-headers alpine-sdk tesseract-ocr 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 # Descargar spa.traineddata y cambiar permisos
