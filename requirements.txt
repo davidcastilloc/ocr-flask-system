@@ -1,9 +1,12 @@
 Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-CORS
+Flask-Redis
+Flask-Caching
 gunicorn
 pytesseract
 clean-text
-Flask-SQLAlchemy
-Flask-Migrate
 python-decouple
 python-dotenv
 pytest
@@ -22,7 +25,5 @@ pytz
 requests
 alembic
 beautifulsoup4
-Flask-Redis
-Flask-Caching
 gunicorn
 unidecode

@@ -9,7 +9,6 @@ compare = Blueprint('compare_feature_blueprint', __name__, static_folder='../sta
 def is_valid_query(query):
     return query is not None and query.strip() != ''
 
-
 @compare.get('/')
 def index():
     query = request.args.get('query', '')
@@ -32,7 +31,6 @@ def index():
             return jsonify({'error': "El medicamento no se encuentra en nuestra base de datos."}), 500
         except Exception as e:
             cache.delete(clave_cache)
-            raise e
             return jsonify({'error': str(e)}), 500
 
     return render_template('compare_product.jinja2',

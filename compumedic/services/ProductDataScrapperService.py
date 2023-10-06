@@ -20,7 +20,7 @@ class ProductScrapped:
     def to_dict(self):
         return {
             "name": self.name,
-            "price": self.price,
+            "price": round(self.price,1),
             "store_id": self.store_id,
             "photo": self.photo
         }

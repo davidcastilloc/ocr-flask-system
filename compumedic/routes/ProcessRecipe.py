@@ -10,7 +10,7 @@ upload = Blueprint('process_recipe_blueprint', __name__, static_folder='../stati
 
 
 @upload.post('/')
-def index():
+def process():
     """
     Display the upload form and handle file upload.
     """
