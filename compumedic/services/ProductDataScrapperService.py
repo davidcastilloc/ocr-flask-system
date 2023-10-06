@@ -8,9 +8,12 @@ class ProductScrapped(object):
     store_id = None
     photo = None
 
-    def __init__(self, name="", price=0, store_id=0, photo=""):
+    def __init__(self, name="", price=Decimal(0), store_id=0, photo=""):
         self.name = name
         self.price = round(Decimal(price), 2)
+        #si el precio es mas barato es por que se esta considerando por unidad * 10 en este caso
+        if (self.price<1):
+            self.price = round(Decimal(price)* 10, 2) 
         self.store_id = store_id
         self.photo = photo
         pass
