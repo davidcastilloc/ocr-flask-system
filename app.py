@@ -12,7 +12,7 @@ cache.init_app(app, config={
     "CACHE_REDIS_DB": "0",
     "CACHE_REDIS_PORT": "6379",
     "CACHE_KEY_PREFIX": "compumedic",
-    "CACHE_DEFAULT_TIMEOUT": 0
+    "CACHE_DEFAULT_TIMEOUT": 43200
 })
 # Registra las rutas de error importadas
 app.register_error_handler(404, not_found)
