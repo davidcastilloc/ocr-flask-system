@@ -19,21 +19,18 @@ class ProductScrapped(object):
         pass
 
     def to_json(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
+        return json.dumps(self.to_dict())
     
     def get_price(self):
         return self.price
-    
-    def get_price_formated(self):
-        return format_money(self.price)
 
     def to_dict(self):
         return {
-            "name": self.name,
-            "price": self.price,
-            "store_id": self.store_id,
-            "photo": self.photo
-        }
+        "name": self.name,
+        "price": self.price,
+        "store_id": self.store_id,
+        "photo": self.photo
+    }
 
 
 class IScrapperQuery:
