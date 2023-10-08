@@ -3,14 +3,13 @@ import traceback
 from compumedic.services.ProductDataScrapperService import ProductScrapped
 from compumedic.utils.Logger import Logger
 from compumedic.cache import cache
-from compumedic.services.CompareFeatureService import get_data
+from compumedic.services.CompareFeatureService import Scraper
 
 from cleantext import clean
 import urllib.parse
 import re
 
 compare = Blueprint('compare_feature_blueprint', __name__, static_folder='../static')
-
 
 def is_valid_query(query):
     return query is not None and query.strip() != ''
@@ -27,7 +26,8 @@ def index():
     list_stores = cache.get(clave_cache)
     if list_stores is None:
         try:
-            list_stores = get_data(query)
+            product_service = Scraper(query)
+            list_stores = product_service.get_data()
             cache.set(clave_cache, list_stores)
         except IndexError:
             cache.delete(clave_cache)
@@ -36,6 +36,7 @@ def index():
             cache.delete(clave_cache)
             Logger.add_to_log("error", str(e))
             Logger.add_to_log("error", traceback.format_exc())
+            raise(e)
             return jsonify({'error': str(e)}), 500
     if request.is_json:
         return jsonify({"products": list_stores})

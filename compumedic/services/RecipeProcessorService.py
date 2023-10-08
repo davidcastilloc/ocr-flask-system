@@ -39,4 +39,7 @@ class RecipeProcessor:
         words_extracted = self.extract_words_from_cleaned_text_and_return_list(cleaned_text)
         list_no_duplicated_items = self._remove_duplicates_on_list(words_extracted)
         only_glossary_words = self.return_glossary_words(list_no_duplicated_items)
+        print("Procesando Imagen OCR")
+        print(f'kywords_extracted: {list_no_duplicated_items}, glossary_kywords: {only_glossary_words}')
+        
         return {'kywords_extracted': list_no_duplicated_items, 'glossary_kywords': only_glossary_words}

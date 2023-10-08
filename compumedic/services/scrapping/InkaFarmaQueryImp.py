@@ -32,6 +32,10 @@ def get_data_product_aws(objectID):
 
 
 class InkaFarmaQueryImp(IScrapperQuery):
+    STORE_NAME = "InkaFarma"
+    STORE_LOGO = "Inkafarma.png"
+    STORE_ID = 5
+    
     url = None
     query = None
 
@@ -46,4 +50,4 @@ class InkaFarmaQueryImp(IScrapperQuery):
     def get_result(self) -> ProductScrapped:
         data = self.execute_query()
         return ProductScrapped(name=data.get('name'), price=data.get('price'),
-                               store_id=6, photo=data.get('imageList')[0].get('url'))
+                               store_id=self.STORE_ID, photo=data.get('imageList')[0].get('url'))

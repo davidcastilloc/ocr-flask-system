@@ -5,6 +5,9 @@ from compumedic.services.ProductDataScrapperService import IScrapperQuery, Produ
 
 
 class BoticasYSaludQueryImp(IScrapperQuery):
+    STORE_NAME = "BoticasHogarYSalud"
+    STORE_LOGO = "BoticasHogarYSalud.png"
+    STORE_ID = 3
     url = None
     query = None
     def __init__(self, query):
@@ -29,4 +32,4 @@ class BoticasYSaludQueryImp(IScrapperQuery):
     def get_result(self) -> ProductScrapped:
         data = self.execute_query()
         return ProductScrapped(name=data.get('title').strip(), price=data.get('price'),
-                               store_id=6, photo=data.get('image'))
+                               store_id=self.STORE_ID, photo=data.get('image'))

@@ -5,6 +5,9 @@ from compumedic.services.ProductDataScrapperService import IScrapperQuery, Produ
 
 
 class BoticasHogarYSalud(IScrapperQuery):
+    STORE_NAME = "BoticasHogarYSalud"
+    STORE_LOGO = "BoticasHogarYSalud.png"
+    STORE_ID = 1
     url = None
     query = None
 
@@ -38,4 +41,4 @@ class BoticasHogarYSalud(IScrapperQuery):
         price = soup.findAll('bdi')[0].text.replace('S/', '').strip()
         soup_photo = BeautifulSoup(data[0].get('thumbnail'), 'html.parser')
         img = soup_photo.findAll('img')[0].get('src')
-        return ProductScrapped(name=title, price=price, store_id=6, photo=img)
+        return ProductScrapped(name=title, price=price, store_id=self.STORE_ID, photo=img)

@@ -1,6 +1,8 @@
 from compumedic import create_app
 from compumedic.cache import cache
 from compumedic.config import Config
+from compumedic.routes.ErrorRoutes import not_found, method_not_allowed, internal_server_error
+
 app = create_app()
 
 
@@ -12,6 +14,10 @@ cache.init_app(app, config={
     "CACHE_KEY_PREFIX": "compumedic",
     "CACHE_DEFAULT_TIMEOUT": 0
 })
+# Registra las rutas de error importadas
+app.register_error_handler(404, not_found)
+app.register_error_handler(405, method_not_allowed)
+app.register_error_handler(500, internal_server_error)
 
 
 if __name__ == "__main__":
