@@ -4,6 +4,7 @@
 .ipynb_checkpoints
 .devcontainer
 docker-compose.override.yml
+compumedic/static/uploads/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -107,5 +108,4 @@ ENV/
 # mypy
 .mypy_cache/
 .vscode
-compumedic/static/uploads/
 .env
