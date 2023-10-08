@@ -23,9 +23,6 @@ class ProductScrapped(object):
     
     def get_price(self):
         return self.price
-    
-    def get_price_formated(self):
-        return format_money(self.price)
 
     def to_dict(self):
         return {

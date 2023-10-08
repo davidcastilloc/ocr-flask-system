@@ -7,19 +7,15 @@ from compumedic.services.ProductDataScrapperService import IScrapperQuery, Produ
 class BoticasYSaludQueryImp(IScrapperQuery):
     url = None
     query = None
-
     def __init__(self, query):
         super().__init__(query)
         self.query = query
-
     def execute_query(self):
         print("Boticas Y Salud QUERY")
         url = "https://bys-prod-backend.azurewebsites.net/api/ServiceProduct/searchbyfilter"
-
         querystring = {
             "filter": self.query
         }
-
         payload = ""
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -30,8 +26,7 @@ class BoticasYSaludQueryImp(IScrapperQuery):
         if len(response.json().get('data')) == 0:
             abort(404, description="No se encontro el producto")
         return response.json().get('data')[0].get('filters')[0]
-
     def get_result(self) -> ProductScrapped:
         data = self.execute_query()
-        return ProductScrapped(name=data.get('title'), price=data.get('price'),
+        return ProductScrapped(name=data.get('title').strip(), price=data.get('price'),
                                store_id=6, photo=data.get('image'))
