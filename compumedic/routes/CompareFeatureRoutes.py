@@ -36,7 +36,6 @@ def index():
             cache.delete(clave_cache)
             Logger.add_to_log("error", str(e))
             Logger.add_to_log("error", traceback.format_exc())
-            raise(e)
             return jsonify({'error': str(e)}), 500
     if request.is_json:
         return jsonify({"products": list_stores})

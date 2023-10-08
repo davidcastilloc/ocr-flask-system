@@ -1,52 +1,45 @@
 {% extends "layout.jinja2" %}
 {% block content %}
-<style>
-
-</style>
-    <table class="table table-sm">
-        <thead>
+<table class="table table-sm">
+    <thead>
+    <tr>
+        <th id="tienda-col" scope="col" class="text-left">Tienda</th>
+        <th scope="col">Producto</th>
+        <th scope="col" class="text-center">Precio Online</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for store in stores %}
         <tr>
-            <th id="tienda-col" scope="col" class="text-left">Tienda</th>
-            <th scope="col">Producto</th>
-            <th scope="col" class="text-center">Precio Online</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for store in stores %}
-            <tr>
-                <th class="text-left">
+            <th class="text-left">
+                <figure class="figure">
+                    <img
+                        id="logo-store"
+                        class="figure-img img-fluid rounded"
+                        src={{ url_for('compare_feature_blueprint.static', filename='img/stores/',
+                            _external = True) ~ store.photo }}
+                    >
+                </figure>
+            </th>
+            <td class="text-center align-middle">
+            <div class="d-flex text-truncate p-0 m-0 ">
+                <div class="align-self-center">
                     <figure class="figure">
                         <img
-                            id="logo-store"
+                            height="50px"
+                            width="50px"
                             class="figure-img img-fluid rounded"
-                            src={{ url_for('compare_feature_blueprint.static', filename='img/stores/',
-                                _external = True) ~ store.photo }}
+                            src={{ store.product.photo }}
+                            onerror="this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nOXWwQnCMBTG8f8SFoo6kIIbiPd2AY92BsFNpO6hB+8tHtxBiBRTKCbaNL4EoR88KCTw44XwGhh7MiCJjeaAAi6x8Qlw1vgVSGPiie5YBagaWNjQVQS8ssEPYGM5dukyojS+Fuj8CEyBGVC6wFJ4A7aZu8ISuDesfsRLjTfoaSjc1L6zLnXbjbxv2JlbRG67ke5iwefYOj/oSZfqb2+4L138bpntRSjYZbZvQ8G+uAjsg4vBLrgKBffhKiT8DVdDJ5drDfmlGqkF8L7ZXpns61kSEr8BS8b2gMxjwi2exUb/K081omTB7YaLuQAAAABJRU5ErkJggg==';"
                         >
                     </figure>
-                </th>
-                <td>
-                <div class="d-flex p-0 m-0">
-                    <div class="align-self-center">
-                        <figure class="figure">
-                            <img
-                                height="50px"
-                                width="50px"
-                                class="figure-img img-fluid rounded"
-                                src={{ store.product.photo }}
-                                onerror="this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nOXWwQnCMBTG8f8SFoo6kIIbiPd2AY92BsFNpO6hB+8tHtxBiBRTKCbaNL4EoR88KCTw44XwGhh7MiCJjeaAAi6x8Qlw1vgVSGPiie5YBagaWNjQVQS8ssEPYGM5dukyojS+Fuj8CEyBGVC6wFJ4A7aZu8ISuDesfsRLjTfoaSjc1L6zLnXbjbxv2JlbRG67ke5iwefYOj/oSZfqb2+4L138bpntRSjYZbZvQ8G+uAjsg4vBLrgKBffhKiT8DVdDJ5drDfmlGqkF8L7ZXpns61kSEr8BS8b2gMxjwi2exUb/K081omTB7YaLuQAAAABJRU5ErkJggg==';"
-                            >
-                        </figure>
-                    </div>
-                    <div class="col-10">
-                        <span>
-                            <h6>{{ store.product.name }}</h6>
-                        </span>
-                    </div>
+                    {{ store.product.name }}
                 </div>
-                </td>
-                <td style="vertical-align: middle;" class="text-center">S/ {{ store.product.price }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </div>
+            </td>
+            <td class="text-center align-middle">S/ {{ store.product.price }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
