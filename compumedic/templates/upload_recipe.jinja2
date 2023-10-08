@@ -1,34 +1,40 @@
 {% extends "layout.jinja2" %}
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h1 class="title-comp">Selecciona un documento</h1>
-                        <form action="{{ url_for('process_recipe_blueprint.process', _external = True) }}" method="POST" enctype="multipart/form-data" class="form-comp">
-                            <label for="file" style="font-family: inter, sans-serif;"><img src="https://www.compymedics.site/wp-content/uploads/2023/10/papel.png" width="28px">Sube un archivo .jpg .png .pdf </label>
-                            <input type="file" id="file" name="file" accept=".jpg, .png">
-                            <br>
-                            <button class="button-comp" style="font-family:Inter, Sans-serif;margin:60 20px;padding: 5 35;border-radius: 20px;background: #882789;border-color: #882789;border: solid 0px;color: #fff;" type="submit">Cargar Receta</button>
-                        </form>
-                    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="title-comp">Selecciona un documento</h1>
+                    <form action="{{ url_for('process_recipe_blueprint.process', _external = True) }}" method="POST"
+                        enctype="multipart/form-data" class="form-comp">
+                        <label for="file" style="font-family: inter, sans-serif;"><img
+                                src="https://www.compymedics.site/wp-content/uploads/2023/10/papel.png"
+                                width="28px">Sube un archivo .jpg .png .pdf </label>
+                        <input type="file" id="file" name="file" accept=".jpg, .png">
+                        <br>
+                        <button class="button-comp"
+                            style="font-family:Inter, Sans-serif;margin:60 20px;padding: 5 35;border-radius: 20px;background: #882789;border-color: #882789;border: solid 0px;color: #fff;"
+                            type="submit">Cargar Receta</button>
+                    </form>
                 </div>
-
             </div>
+
         </div>
     </div>
+</div>
 
-    <style>
+<style>
     h1.title-comp {
-    text-align: center;
-    color: #000000;
-    font-family: "Inter", Sans-serif;
-    font-size: 35px;
-    font-weight: 500;
+        text-align: center;
+        color: #000000;
+        font-family: "Inter", Sans-serif;
+        font-size: 35px;
+        font-weight: 500;
     }
+
     form.form-comp {
-    text-align: center;
+        text-align: center;
     }
-    </style>
-    {% endblock %}
+</style>
+{% endblock %}

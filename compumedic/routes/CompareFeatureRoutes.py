@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template, jsonify, abort, request
+from flask import Blueprint, render_template, jsonify, abort, request
 import traceback
 from compumedic.services.ProductDataScrapperService import ProductScrapped
 from compumedic.utils.Logger import Logger
@@ -9,13 +9,16 @@ from cleantext import clean
 import urllib.parse
 import re
 
-compare = Blueprint('compare_feature_blueprint', __name__, static_folder='../static')
+compare = Blueprint('compare_feature_blueprint',
+                    __name__, static_folder='../static')
+
 
 def is_valid_query(query):
     return query is not None and query.strip() != ''
 
+
 @compare.route('/', methods=['GET'])
-def index():
+def compara():
     query = request.args.get('query', '')
     query = re.split(" &#8211; | - | – ", query)[0]
     query = clean(query)
