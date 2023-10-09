@@ -1,12 +1,9 @@
 <!doctype html>
 <html lang="es">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <head>
     {% block head %}
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src={{ url_for('compare_feature_blueprint.static', filename='js/index.js' , _external=True) }}></script>
     <link rel="stylesheet" href={{ url_for('compare_feature_blueprint.static', filename='css/index.css' ,
         _external=True) }}>
