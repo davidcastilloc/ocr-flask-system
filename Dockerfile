@@ -22,4 +22,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN apk del gcc musl-dev linux-headers alpine-sdk 
 ENV FLASK_ENV production
 EXPOSE 5000
-CMD gunicorn --certfile=/var/certs/cert1.pem --keyfile=/var/certs/privkey1.pem -w 4 -b 0.0.0.0:5000 app:app
+CMD gunicorn -w 4 -b microservicio.compymedics.site:5000 app:app

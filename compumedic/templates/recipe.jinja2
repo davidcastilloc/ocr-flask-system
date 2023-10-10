@@ -6,8 +6,8 @@
     <div class="media-body">
         <ul class="list-group">
             {% for word in lists.get("glossary_kywords") %}
-            <a href={{ url_for('compare_feature_blueprint.compara', _external=True, query=word) }}
-                class="list-group-item list-group-item-action">{{ word }}</a>
+            <a href="https://microservicio.compymedics.site/compare/?query={{word}}"
+                class="list-group-item list-group-item-action"> {{word}}</a>
             {% endfor %}
         </ul>
     </div>

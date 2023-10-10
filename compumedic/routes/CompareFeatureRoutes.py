@@ -41,6 +41,6 @@ def compara():
             Logger.add_to_log("error", traceback.format_exc())
             return jsonify({'error': str(e)}), 500
     if request.is_json:
-        return jsonify({"products": list_stores})
+        return jsonify(list_stores)
     else:
         return render_template('compare_product.jinja2', stores=list_stores)

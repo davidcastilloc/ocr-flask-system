@@ -1,10 +1,15 @@
 from compumedic import create_app
 from compumedic.cache import cache
 from compumedic.config import Config
+from compumedic.extensions import cors
+
 from compumedic.routes.ErrorRoutes import not_found, method_not_allowed, internal_server_error
+
 
 app = create_app()
 
+
+cors.init_app(app)
 
 cache.init_app(app, config={
     "CACHE_TYPE": Config.REDIS_CACHE_TYPE,
