@@ -14,7 +14,7 @@ class RecipeProcessor:
         return glossary.split("\n")
 
     def _extract_raw_text_from_recipe(self, route_img_recipe):
-        custom_config = r'--oem 3 --psm 6 --user-words "spa.user-words"'
+        custom_config = r'--oem 3 --psm 6 --user-words "compumedic/services/spa.user-words"'
         raw_text = pytesseract.image_to_string(
             route_img_recipe, lang='spa', config=custom_config)
         return raw_text
